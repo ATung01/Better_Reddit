@@ -7,7 +7,7 @@ export default class Viewer extends React.Component {
     return(
       <Segment size="massive" padded="very">
         <p> THIS IS OUR STORE </p>
-        {this.props.bigImage ? <Image src={this.props.bigImage.url} /> : null
+        {this.props.bigImage[0] ? <Image src={this.props.bigImage[0]["url"]} /> : null
         }
       </Segment>
     )

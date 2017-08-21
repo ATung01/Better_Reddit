@@ -4,8 +4,7 @@ import { Card, Image } from 'semantic-ui-react'
 export default class Tile extends React.Component {
 
   handleClick = (event) => {
-    console.log(this.props)
-    this.props.changeViewerState(this.props.image.key)
+    this.props.changeViewerState(this.props.post.id)
   }
 
   render(){
