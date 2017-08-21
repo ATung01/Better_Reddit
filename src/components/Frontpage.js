@@ -38,21 +38,19 @@ export default class Frontpage extends React.Component {
     newState["posts"] = this.state.posts.concat(oldView)
     console.log(newState)
 
-    // if (oldView.length !== 0) {
-    //   console.log(oldView)
-    //   newState["posts"].push(oldView)
-    // }
-
-
     this.setState(newState)
 
+  }
+
+  refresh = () => {
+    this.grid.updateLayout()
   }
 
   render(){
     return(
       <div>
-        <Viewer bigImage={this.state.viewer}/>
-        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts}/>
+        <Viewer bigImage={this.state.viewer} updateLayout={this.refresh}/>
+        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} />
       </div>
     )
   }
