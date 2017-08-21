@@ -7,10 +7,6 @@ const { scaleDown } = transitions;
 
 export default class Browser extends React.Component {
 
-  // refresh = () => {
-  //   this.grid.updateLayout()
-  // }
-
   render(){
     return(
 

@@ -50,7 +50,7 @@ export default class Frontpage extends React.Component {
     return(
       <div>
         <Viewer bigImage={this.state.viewer} updateLayout={this.refresh}/>
-        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} />
+        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh}/>
       </div>
     )
   }

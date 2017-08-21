@@ -17,7 +17,7 @@ export default class Viewer extends React.Component {
           entered={scaleDown.entered}
           leaved={scaleDown.leaved}
           gridRef={grid => this.grid = grid} >
-            {this.props.bigImage[0] ? <Image src={this.props.bigImage[0]["url"]} onLoad={this.props.updateLayout}/> : null
+            {this.props.bigImage[0] ? <Image src={this.props.bigImage[0]["url"]} onInitialized={this.props.updateLayout} /> : null
             }
         </StackGrid>
       </Segment>
