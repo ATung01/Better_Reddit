@@ -3,8 +3,6 @@ import { Segment, Image  } from 'semantic-ui-react'
 
 export default class Viewer extends React.Component {
 
-
-
   render(){
     return(
       <Segment size="massive" padded="very">

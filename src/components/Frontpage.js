@@ -7,15 +7,15 @@ export default class Frontpage extends React.Component {
     posts: []
           }
 
-
   componentDidMount(){
     fetch('http://localhost:8080/posts')
       .then(resp => resp.json())
       .then(results =>
         this.setState({
           posts: results
-          }
-        , () => console.log(this.state)))}
+        })
+      )
+    }
 
 
   changeViewerState = (id) => {
@@ -25,11 +25,8 @@ export default class Frontpage extends React.Component {
           // posts: [...this.state.viewer, {viewer: true ? false : true}]
         })
       }
-
     })
-
   }
-
 
   render(){
     return(

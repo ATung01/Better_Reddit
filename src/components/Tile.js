@@ -12,9 +12,7 @@ export default class Tile extends React.Component {
     return(
       <div>
          <Card>
-           <Image src={this.props.post.url} onClick={this.handleClick} />
-
-
+           <Image src={this.props.post.url} onClick={this.handleClick} onLoad={this.props.updateLayout} />
          </Card>
       </div>
     )
