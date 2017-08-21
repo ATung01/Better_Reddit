@@ -6,7 +6,9 @@ const { scaleDown } = transitions;
 
 export default class Browser extends React.Component {
 
-
+  something = () => {
+          this.grid.updateLayout()
+          }
 
   render(){
     return(
@@ -16,12 +18,13 @@ export default class Browser extends React.Component {
         appeared={scaleDown.appeared}
         enter={scaleDown.enter}
         entered={scaleDown.entered}
-        leaved={scaleDown.leaved}>
-        {
-          this.props.images.map((image) => {
-            if (image.viewer === false) {
-              return <Tile changeViewerState={this.props.changeViewerState} image={image}/>
-            }
+        leaved={scaleDown.leaved}
+        gridRef={grid => this.grid = grid}>
+        { 
+          this.props.posts.map((post) => {
+
+              return <Tile changeViewerState={this.props.changeViewerState} key={post.id} post={post} onLoad={this.something()}/>
+
           })
         }
       </StackGrid>
