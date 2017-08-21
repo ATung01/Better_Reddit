@@ -31,7 +31,6 @@ export default class Frontpage extends React.Component {
   render(){
     return(
       <div>
-
         <Viewer bigImage={this.state.posts.find((post) => post["viewer"] === true)}/>
         <Browser changeViewerState={this.changeViewerState} posts={this.state.posts}/>
       </div>
