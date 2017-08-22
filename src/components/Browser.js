@@ -4,7 +4,6 @@ import StackGrid, {transitions} from "react-stack-grid"
 
 const { scaleDown } = transitions;
 
-
 export default class Browser extends React.Component {
 
   render(){

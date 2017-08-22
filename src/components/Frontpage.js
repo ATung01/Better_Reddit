@@ -1,33 +1,39 @@
 import React from 'react'
 import Browser from './Browser'
 import Viewer from './Viewer'
+import SubredditFilter from './SubredditFilter'
 
 export default class Frontpage extends React.Component {
   state = {
     posts: [],
-    viewer: []
+    viewer: [],
+    subreddit: "itookapicture"
+  }
 
-          }
+  handleSubreddit = (subreddit) => {
+    this.setState({
+      subreddit: subreddit
+    })
+  }
 
-  componentDidMount(){
-    fetch('http://localhost:8080/posts')
+  reddit = () => {
+    return fetch(`http://localhost:8080/posts?sub_reddit=${this.state.subreddit}`)
       .then(resp => resp.json())
       .then(results =>
         this.setState({
           posts: results
         })
       )
+  }
+
+  componentDidMount(){
+    this.reddit()
     }
 
-
   changeViewerState = (id) => {
-    // this.setState({
-    //   posts: [...this.state.posts, oldView]
-    // })
     let selectedPost
     let oldView
     let newState = {}
-
     let selectedIndex = this.state.posts.findIndex((post) => {
       return post.id === id
     })
@@ -36,10 +42,8 @@ export default class Frontpage extends React.Component {
     selectedPost = this.state.posts.splice(selectedIndex, 1)
     newState["viewer"] = selectedPost
     newState["posts"] = this.state.posts.concat(oldView)
-    console.log(newState)
 
     this.setState(newState)
-
   }
 
   refresh = () => {
@@ -49,8 +53,9 @@ export default class Frontpage extends React.Component {
   render(){
     return(
       <div>
-        <Viewer bigImage={this.state.viewer} updateLayout={this.refresh}/>
-        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh}/>
+        <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
+        <Viewer bigImage={this.state.viewer} updateLayout={this.refresh} />
+        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} />
       </div>
     )
   }
