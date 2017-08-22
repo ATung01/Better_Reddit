@@ -1,5 +1,6 @@
 import React from 'react'
 import { List, Segment } from 'semantic-ui-react'
+import Save from './Save'
 
 const Info = (props) => {
 
@@ -17,6 +18,9 @@ const Info = (props) => {
             <List.Header>URL</List.Header>
             { props.selected['url'] }
           </List.Content>
+        </List.Item>
+        <List.Item>
+          <Save />
         </List.Item>
       </List>
     </Segment>
