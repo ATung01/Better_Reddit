@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from 'semantic-ui-react'
+import { Input, Segment } from 'semantic-ui-react'
 
 const SubredditFilter = (props) => {
 
@@ -13,11 +13,18 @@ const SubredditFilter = (props) => {
     }
   }
 
-  return <Input label='reddit.com/r/'
-            placeholder='beerwithaview'
-            value={props.subreddit}
-            onKeyPress={handlePress}
-            onChange={handleChange} />
+  return (
+    <Segment padded>
+      <Input
+        label='reddit.com/r/'
+        placeholder='beerwithaview'
+        value={props.subreddit}
+        onKeyPress={handlePress}
+        onChange={handleChange}
+      />
+    </Segment>
+  )
+
 }
 
 export default SubredditFilter;

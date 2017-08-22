@@ -51,7 +51,7 @@ export default class Frontpage extends React.Component {
     return(
       <div>
         <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
-        <Viewer bigImage={this.state.viewer} updateLayout={this.refresh} />
+        <Viewer selected={this.state.viewer} />
         <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} />
       </div>
     )
