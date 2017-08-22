@@ -46,10 +46,6 @@ export default class Frontpage extends React.Component {
     this.setState(newState)
   }
 
-  refresh = () => {
-    this.grid.updateLayout()
-  }
-
   render(){
     return(
       <div>
