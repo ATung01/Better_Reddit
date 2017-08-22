@@ -7,7 +7,8 @@ export default class Frontpage extends React.Component {
   state = {
     posts: [],
     viewer: [],
-    subreddit: "itookapicture"
+    subreddit: "itookapicture",
+    sort_by: "new"
   }
 
   handleSubreddit = (subreddit) => {
@@ -17,7 +18,7 @@ export default class Frontpage extends React.Component {
   }
 
   reddit = () => {
-    return fetch(`http://localhost:8080/posts?sub_reddit=${this.state.subreddit}`)
+    return fetch(`http://localhost:8080/posts?sub_reddit=${this.state.subreddit}&sort_by=${this.state.sort_by}`)
       .then(resp => resp.json())
       .then(results =>
         this.setState({
