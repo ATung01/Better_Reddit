@@ -1,24 +1,20 @@
 import React from 'react'
-import { Segment, Image  } from 'semantic-ui-react'
-import StackGrid, {transitions} from "react-stack-grid"
+import { Grid } from 'semantic-ui-react'
+import BigPicture from './BigPicture'
+import Info from './Info'
 
 export default class Viewer extends React.Component {
 
-  refresh = () => {
-    this.grid.updateLayout()
-  }
-
   render(){
     return(
-      <Segment size="massive" padded="very">
-        <StackGrid
-          columnWidth={"20%"}
-          gridRef={grid => this.grid = grid}
-          onLoad={this.refresh} >
-            {this.props.bigImage[0] ? <Image src={this.props.bigImage[0]["url"]} /> : null
-            }
-        </StackGrid>
-      </Segment>
+      <Grid>
+        <Grid.Column width={10}>
+          <BigPicture selected={this.props.selected[0]} />
+        </Grid.Column>
+        <Grid.Column width={5}>
+          <Info selected={this.props.selected[0]}/>
+        </Grid.Column>
+      </Grid>
     )
   }
 }
