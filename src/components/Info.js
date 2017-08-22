@@ -6,7 +6,7 @@ const Info = (props) => {
 
   return (
     <Segment >
-      <List divided inverted relaxed>
+      <List divided relaxed>
         <List.Item>
           <List.Content>
             <List.Header>Title</List.Header>
