@@ -5,7 +5,7 @@ import Save from './Save'
 const Info = (props) => {
 
   return (
-    <Segment inverted>
+    <Segment >
       <List divided inverted relaxed>
         <List.Item>
           <List.Content>
