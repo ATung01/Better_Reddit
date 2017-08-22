@@ -4,7 +4,7 @@ import { List, Segment } from 'semantic-ui-react'
 const Info = (props) => {
 
   return (
-    <Segment inverted centered>
+    <Segment inverted>
       <List divided inverted relaxed>
         <List.Item>
           <List.Content>
