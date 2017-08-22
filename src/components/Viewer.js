@@ -6,7 +6,6 @@ import Info from './Info'
 export default class Viewer extends React.Component {
 
   splashIfNoneSelected = (selected) => {
-    console.log(this.props.selected)
     if (this.props.selected.length === 0) {
       return <p>Welcome to Better Reddit</p>
     }
