@@ -10,7 +10,6 @@ import fetch from 'isomorphic-fetch'
 export default class Frontpage extends React.Component {
   state = {
     posts: [],
-    next_posts: [],
     viewer: {},
     subreddit: "earthporn",
     sort_by: "top"
@@ -49,11 +48,9 @@ export default class Frontpage extends React.Component {
     fetch(`http://localhost:8080/posts/next_page?sub_reddit=${this.state.subreddit}&sort_by=${this.state.sort_by}`)
       .then(resp => resp.json())
       .then(results =>
-        {console.log(results),
         this.setState({
-          posts: [...this.state.posts, ...results],
-          next_posts: results
-        })}
+          posts: [...this.state.posts, ...results]
+        })
       )
 
   }
@@ -86,7 +83,7 @@ export default class Frontpage extends React.Component {
         <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
         <Viewer selected={this.state.viewer} addToStore={this.addToStore} />
 
-        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} next_posts={this.state.next_posts} updateLayout={this.refresh} morePosts={this.morePosts}/>
+        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} morePosts={this.morePosts}/>
 
       </div>
     )
