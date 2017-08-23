@@ -7,7 +7,7 @@ export default class Viewer extends React.Component {
 
   splashIfNoneSelected = (selected) => {
     if (Object.keys(this.props.selected).length === 0) {
-      return <p>Welcome to Better Reddit</p>
+      return <p>Select Photo Below to View</p>
     }
     else {
       return (

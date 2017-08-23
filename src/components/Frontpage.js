@@ -2,6 +2,7 @@ import React from 'react'
 import Browser from './Browser'
 import Viewer from './Viewer'
 import SubredditFilter from './SubredditFilter'
+import Header from './Header'
 import fetch from 'isomorphic-fetch'
 
 
@@ -75,6 +76,7 @@ export default class Frontpage extends React.Component {
   render(){
     return(
       <div>
+        <Header />
         <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
         <Viewer selected={this.state.viewer} addToStore={this.addToStore} />
         <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} />
