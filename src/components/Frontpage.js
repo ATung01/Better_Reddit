@@ -5,8 +5,6 @@ import SubredditFilter from './SubredditFilter'
 import Header from './Header'
 import fetch from 'isomorphic-fetch'
 
-
-
 export default class Frontpage extends React.Component {
   state = {
     posts: [],
@@ -21,7 +19,6 @@ export default class Frontpage extends React.Component {
     })
   }
 
-
   addToStore = () => {
     let myInit = {
       method: "post",
@@ -32,7 +29,6 @@ export default class Frontpage extends React.Component {
     }
     return fetch("http://localhost:8080/posts", myInit )
       .then(resp => resp.json()).then(result => console.log(result))
-
   }
 
   reddit = () => {
@@ -53,31 +49,20 @@ export default class Frontpage extends React.Component {
           posts: [...this.state.posts, ...results]
         })
       )
-
   }
 
   componentDidMount(){
     this.reddit()
     }
 
-
-
-  changeViewerState = (id) => {
-    let selectedPost
-    let oldView
+  changeViewerState = (post) => {
+    let selectedPost = post
+    let oldView = [this.state.viewer]
     let newState = {}
-    let selectedIndex = this.state.posts.findIndex((post) => {
-      return post.post_id === id
-    })
-
-    oldView = [this.state.viewer]
-    selectedPost = this.state.posts.splice(selectedIndex, 1)
-    newState["viewer"] = selectedPost[0]
+    newState["viewer"] = selectedPost
     newState["posts"] = oldView.concat(this.state.posts)
-
     this.setState(newState)
   }
-
 
   render(){
     return(
@@ -85,9 +70,7 @@ export default class Frontpage extends React.Component {
         <Header />
         <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
         <Viewer selected={this.state.viewer} addToStore={this.addToStore} changeViewerState={this.changeViewerState} />
-
         <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} morePosts={this.morePosts}/>
-
       </div>
     )
   }

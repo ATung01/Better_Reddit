@@ -24,7 +24,9 @@ export default class Store extends React.Component {
   }
 
   handleClick = (event) => {
-    this.props.changeViewerState(event.target.data)
+    this.props.changeViewerState(
+      this.state.store.find(p => p.post_id === event.target.attributes[0].value)
+    )
   }
 
   handleEmpty = () => {
