@@ -84,7 +84,7 @@ export default class Frontpage extends React.Component {
       <div>
         <Header />
         <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
-        <Viewer selected={this.state.viewer} addToStore={this.addToStore} />
+        <Viewer selected={this.state.viewer} addToStore={this.addToStore} changeViewerState={this.changeViewerState} />
 
         <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} morePosts={this.morePosts}/>
 
