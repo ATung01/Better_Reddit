@@ -23,10 +23,14 @@ export default class Store extends React.Component {
     this.getStore()
   }
 
+  handleClick = (event) => {
+    this.props.changeViewerState(event.target.data)
+  }
+
   handleEmpty = () => {
     if (this.state.store.length !== 0){
       return this.state.store.map(p => {
-        return <Container key={p.post_id} ><Image src={p.thumbnail} shape='rounded' /></Container>
+        return <Container key={p.post_id} ><Image src={p.thumbnail} shape='rounded' data={p.post_id} onClick={this.handleClick} /></Container>
       })
     }
     else {

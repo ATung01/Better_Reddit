@@ -19,7 +19,7 @@ export default class Viewer extends React.Component {
             </Grid.Column>
             <Grid.Column width={5}>
               <Info selected={selected} addToStore={this.props.addToStore} />
-              <Store />
+              <Store changeViewerState={this.props.changeViewerState} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
