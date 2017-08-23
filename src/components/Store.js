@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
-import { Segment, Image } from 'semantic-ui-react'
+import { Container, Image } from 'semantic-ui-react'
 
 export default class Store extends React.Component {
   constructor() {
@@ -26,7 +26,7 @@ export default class Store extends React.Component {
   handleEmpty = () => {
     if (this.state.store.length !== 0){
       return this.state.store.map(p => {
-        return <div key={p.post_id} ><Image src={p.thumbnail} /></div>
+        return <Container key={p.post_id} ><Image src={p.thumbnail} shape='rounded' /></Container>
       })
     }
     else {
@@ -38,16 +38,17 @@ export default class Store extends React.Component {
     let settings = {
       dots: true,
       arrows: true,
+      variableHeight: true,
       infinite: true,
       slidesToShow: 3,
-      slidesToScroll: 1
+      slidesToScroll: 3
     };
     return (
-      <Segment >
+      <Container >
         <Slider {...settings}>
           {this.handleEmpty()}
         </Slider>
-      </Segment >
+      </Container >
     );
   }
 }
