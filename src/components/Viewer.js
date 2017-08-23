@@ -8,7 +8,7 @@ import Store from './Store'
 export default class Viewer extends React.Component {
 
   state = {
-    comment: ""
+    comment: "loading"
   }
 
 
@@ -16,6 +16,11 @@ export default class Viewer extends React.Component {
    getComment = () => {
     fetch(`http://localhost:8080/posts/get_comment?link=${this.props.selected.permalink}`)
     .then(resp => resp.json()).then(topComment => {
+
+      this.setState({
+        comment: "loading"
+      })
+
       this.setState({
       comment: topComment.string
     })})
@@ -27,7 +32,6 @@ export default class Viewer extends React.Component {
       return <p>Select Photo Below to View</p>
     }
     else {
-      this.getComment()
       return (
         <Grid>
           <Grid.Row>
@@ -46,7 +50,7 @@ export default class Viewer extends React.Component {
 
   render(){
     return(
-      <Segment>
+      <Segment onLoad={this.getComment}>
         {this.splashIfNoneSelected(this.props.selected)}
       </Segment>
     )

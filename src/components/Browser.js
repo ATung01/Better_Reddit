@@ -1,7 +1,6 @@
 import React from 'react'
 import Tile from './Tile'
 import StackGrid from "react-stack-grid"
-import InfiniteScroll from 'react-infinite-scroller';
 
 
 
@@ -30,7 +29,7 @@ export default class Browser extends React.Component {
 
         </StackGrid>
 
-        
+
 
     )
   }
