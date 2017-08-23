@@ -21,6 +21,7 @@ export default class Frontpage extends React.Component {
     })
   }
 
+
   addToStore = () => {
     let myInit = {
       method: "post",
@@ -35,7 +36,7 @@ export default class Frontpage extends React.Component {
   }
 
   reddit = () => {
-    return fetch(`http://localhost:8080/posts?sub_reddit=${this.state.subreddit}&sort_by=${this.state.sort_by}`)
+    return fetch(`http://localhost:8080/posts?sub_reddit=${this.state.subreddit}&sort=${this.state.sort_by}`)
       .then(resp => resp.json())
       .then(results =>
         this.setState({
@@ -45,7 +46,7 @@ export default class Frontpage extends React.Component {
   }
 
   morePosts = () => {
-    fetch(`http://localhost:8080/posts/next_page?sub_reddit=${this.state.subreddit}&sort_by=${this.state.sort_by}`)
+    fetch(`http://localhost:8080/posts/next_page?sub_reddit=${this.state.subreddit}&sort=${this.state.sort_by}`)
       .then(resp => resp.json())
       .then(results =>
         this.setState({
@@ -58,6 +59,8 @@ export default class Frontpage extends React.Component {
   componentDidMount(){
     this.reddit()
     }
+
+
 
   changeViewerState = (id) => {
     let selectedPost
@@ -83,7 +86,7 @@ export default class Frontpage extends React.Component {
         <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
         <Viewer selected={this.state.viewer} addToStore={this.addToStore} />
 
-        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} morePosts={this.morePosts}/>
+        <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} morePosts={this.morePosts}/>
 
       </div>
     )
