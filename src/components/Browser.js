@@ -16,13 +16,7 @@ export default class Browser extends React.Component {
 
   render(){
     return(
-      <InfiniteScroll
-      pageStart={0}
-      loadMore={this.props.morePosts}
-      hasMore={true || false}
-      loader={<div className="loader">Loading ...</div>}
-      useWindow={false}
-      >
+
         <StackGrid
           columnWidth={375}
           gridRef={grid => this.grid = grid}
@@ -33,10 +27,10 @@ export default class Browser extends React.Component {
         return <Tile changeViewerState={this.props.changeViewerState} key={post.post_id} post={post} />
         })
       }
-    
+
         </StackGrid>
 
-        </InfiniteScroll>
+        
 
     )
   }
