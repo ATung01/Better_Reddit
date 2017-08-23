@@ -2,6 +2,7 @@ import React from 'react'
 import { Grid, Segment } from 'semantic-ui-react'
 import BigPicture from './BigPicture'
 import Info from './Info'
+import Store from './Store'
 
 export default class Viewer extends React.Component {
 
@@ -12,12 +13,15 @@ export default class Viewer extends React.Component {
     else {
       return (
         <Grid>
-          <Grid.Column width={10}>
-            <BigPicture selected={selected} />
-          </Grid.Column>
-          <Grid.Column width={5}>
-            <Info selected={selected} addToStore={this.props.addToStore} />
-          </Grid.Column>
+          <Grid.Row>
+            <Grid.Column width={10}>
+              <BigPicture selected={selected} />
+            </Grid.Column>
+            <Grid.Column width={5}>
+              <Info selected={selected} addToStore={this.props.addToStore} />
+              <Store />
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
       )
     }
