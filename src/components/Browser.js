@@ -16,30 +16,27 @@ export default class Browser extends React.Component {
 
   render(){
     return(
+      <InfiniteScroll
+      pageStart={0}
+      loadMore={this.props.morePosts}
+      hasMore={true || false}
+      loader={<div className="loader">Loading ...</div>}
+      useWindow={false}
+      >
         <StackGrid
           columnWidth={375}
           gridRef={grid => this.grid = grid}
           onLoad={this.refresh} >
-          {this.props.posts.map((post) => {
-            return <Tile changeViewerState={this.props.changeViewerState} key={post.post_id} post={post} />
-            })
-          }
 
-      <InfiniteScroll
-          pageStart={0}
-          loadMore={this.props.morePosts}
-          hasMore={true || false}
-          loader={<div className="loader">Loading ...</div>}
-          useWindow={false}
-      >
-      {this.props.next_posts.map((post) => {
+
+      {this.props.posts.map((post) => {
         return <Tile changeViewerState={this.props.changeViewerState} key={post.post_id} post={post} />
         })
       }
-      </InfiniteScroll>
-
+    
         </StackGrid>
 
+        </InfiniteScroll>
 
     )
   }
