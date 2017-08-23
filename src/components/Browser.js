@@ -20,7 +20,6 @@ export default class Browser extends React.Component {
             return <Tile changeViewerState={this.props.changeViewerState} key={post.post_id} post={post} />
             })
           }
-
         </StackGrid>
     )
   }

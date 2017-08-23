@@ -80,7 +80,6 @@ export default class Frontpage extends React.Component {
         <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
         <Viewer selected={this.state.viewer} addToStore={this.addToStore} />
         <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} />
-
       </div>
     )
   }
