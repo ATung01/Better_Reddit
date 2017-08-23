@@ -2,13 +2,15 @@ import React from 'react'
 import Browser from './Browser'
 import Viewer from './Viewer'
 import SubredditFilter from './SubredditFilter'
+import fetch from 'isomorphic-fetch'
+
 
 export default class Frontpage extends React.Component {
   state = {
     posts: [],
-    viewer: [],
-    subreddit: "itookapicture",
-    sort_by: "new"
+    viewer: {},
+    subreddit: "earthporn",
+    sort_by: "top"
   }
 
   handleSubreddit = (subreddit) => {
@@ -17,8 +19,31 @@ export default class Frontpage extends React.Component {
     })
   }
 
+  addToStore = () => {
+    let myInit = {
+      method: "post",
+      body: JSON.stringify(this.state.viewer),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    return fetch("http://localhost:8080/posts", myInit )
+      .then(resp => resp.json()).then(result => console.log(result))
+
+  }
+
   reddit = () => {
     return fetch(`http://localhost:8080/posts?sub_reddit=${this.state.subreddit}&sort_by=${this.state.sort_by}`)
+      .then(resp => resp.json())
+      .then(results =>
+        this.setState({
+          posts: results
+        })
+      )
+  }
+
+  morePosts = () => {
+    return fetch(`http://localhost:8080/posts/next_page?sub_reddit=${this.state.subreddit}&sort_by=${this.state.sort_by}`)
       .then(resp => resp.json())
       .then(results =>
         this.setState({
@@ -36,13 +61,13 @@ export default class Frontpage extends React.Component {
     let oldView
     let newState = {}
     let selectedIndex = this.state.posts.findIndex((post) => {
-      return post.id === id
+      return post.post_id === id
     })
 
-    oldView = this.state.viewer.splice(0, 1)
+    oldView = [this.state.viewer]
     selectedPost = this.state.posts.splice(selectedIndex, 1)
-    newState["viewer"] = selectedPost
-    newState["posts"] = this.state.posts.concat(oldView)
+    newState["viewer"] = selectedPost[0]
+    newState["posts"] = oldView.concat(this.state.posts)
 
     this.setState(newState)
   }
@@ -51,8 +76,9 @@ export default class Frontpage extends React.Component {
     return(
       <div>
         <SubredditFilter changeSubreddit={this.handleSubreddit} subreddit={this.state.subreddit} search={this.reddit} />
-        <Viewer selected={this.state.viewer} />
+        <Viewer selected={this.state.viewer} addToStore={this.addToStore} />
         <Browser changeViewerState={this.changeViewerState} posts={this.state.posts} updateLayout={this.refresh} />
+
       </div>
     )
   }

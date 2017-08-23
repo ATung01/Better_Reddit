@@ -15,12 +15,12 @@ const Info = (props) => {
         </List.Item>
         <List.Item>
           <List.Content>
-            <List.Header>URL</List.Header>
+            <List.Header>Top Comment</List.Header>
             { props.selected['url'] }
           </List.Content>
         </List.Item>
         <List.Item>
-          <Save />
+          <Save addToStore={props.addToStore}/>
         </List.Item>
       </List>
     </Segment>

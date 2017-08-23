@@ -13,10 +13,10 @@ export default class Viewer extends React.Component {
       return (
         <Grid>
           <Grid.Column width={10}>
-            <BigPicture selected={selected[0]} />
+            <BigPicture selected={selected} />
           </Grid.Column>
           <Grid.Column width={5}>
-            <Info selected={selected[0]}/>
+            <Info selected={selected} addToStore={this.props.addToStore} />
           </Grid.Column>
         </Grid>
       )
