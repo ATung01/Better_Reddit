@@ -4,6 +4,8 @@ import Save from './Save'
 
 const Info = (props) => {
 
+
+
   return (
     <Segment >
       <List divided relaxed>
@@ -15,8 +17,8 @@ const Info = (props) => {
         </List.Item>
         <List.Item>
           <List.Content>
-            <List.Header>Top Comment</List.Header>
-            { props.selected['url'] }
+            <List.Header >Top Comment</List.Header>
+            {props.comment}
           </List.Content>
         </List.Item>
         <List.Item>
