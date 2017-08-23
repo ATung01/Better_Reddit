@@ -35,13 +35,8 @@ export default class Viewer extends React.Component {
               <BigPicture selected={selected} />
             </Grid.Column>
             <Grid.Column width={5}>
-<<<<<<< HEAD
               <Info selected={selected} addToStore={this.props.addToStore} comment={this.state.comment}/>
-              <Store />
-=======
-              <Info selected={selected} addToStore={this.props.addToStore} />
               <Store changeViewerState={this.props.changeViewerState} />
->>>>>>> storeEvent
             </Grid.Column>
           </Grid.Row>
         </Grid>
