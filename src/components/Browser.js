@@ -26,12 +26,12 @@ export default class Browser extends React.Component {
                 changeSubreddit={this.props.changeSubreddit}
                 toggleVisibility={this.toggleVisibility} />
             </Menu.Item>
-            <Menu.Item name='sortBy'>
+            <Menu.Item name='store'>
               <Store changeViewerState={this.props.changeViewerState} />
             </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher>
-          <Button onClick={this.toggleVisibility}>Search</Button>
+          <Button onClick={this.toggleVisibility} fluid >Search</Button>
             <Segment basic>
               <StackGrid
                 columnWidth={300}
