@@ -18,9 +18,12 @@
   font-size: large;
 }
 
+.reddit-blue {
+  background-color: #71A9F7;
+}
 
 .row {
-  background-color: #839D9A;
+  background-color: #71A9F7;
 }
 
 .ui.segment.Viewer {

@@ -6,7 +6,7 @@ const Save = (props) => {
   const handleClick = (event) => props.addToStore()
 
   return (
-    <Button onClick={handleClick} basic color="green" animated>
+    <Button onClick={handleClick} basic color="blue" animated>
       <Button.Content visible>Save</Button.Content>
       <Button.Content hidden>
         <Icon name='save' />

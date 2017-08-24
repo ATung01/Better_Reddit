@@ -42,15 +42,14 @@ export default class Store extends React.Component {
 
   render() {
     let settings = {
-      dots: true,
       arrows: true,
-      variableHeight: true,
       infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 3
+      slidesToShow: 10,
+      slidesToScroll: 3,
+      vertical: true
     };
     return (
-      <Container >
+      <Container centered >
         <Slider {...settings}>
           {this.handleEmpty()}
         </Slider>

@@ -1,8 +1,9 @@
 import React from 'react'
-import { Image } from 'semantic-ui-react'
+import { Image, Segment } from 'semantic-ui-react'
 
 const BigPicture = (props) => {
-  return <Image src={ props.selected['url'] } size="big" centered />
+  return <Image alt={props.selected['title']} src={ props.selected['url'] } size="big" shape='rounded' centered />
+
 }
 
 export default BigPicture;
