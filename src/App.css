@@ -18,6 +18,23 @@
   font-size: large;
 }
 
+
+.row {
+  background-color: #839D9A;
+}
+
+.ui.segment.Viewer {
+  background-color: #71A9F7;
+}
+.ui.segment.Footer {
+  background-color: #71A9F7;
+}
+
+body {
+  background-color: #71A9F7;
+
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

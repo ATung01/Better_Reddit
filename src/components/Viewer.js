@@ -50,7 +50,7 @@ export default class Viewer extends React.Component {
 
   render(){
     return(
-      <Segment onLoad={this.getComment}>
+      <Segment className="Viewer" onLoad={this.getComment}>
         {this.splashIfNoneSelected(this.props.selected)}
       </Segment>
     )
