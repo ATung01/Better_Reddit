@@ -49,7 +49,7 @@ export default class Store extends React.Component {
       vertical: true
     };
     return (
-      <Container centered >
+      <Container >
         <Slider {...settings}>
           {this.handleEmpty()}
         </Slider>

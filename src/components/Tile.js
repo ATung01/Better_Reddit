@@ -11,7 +11,7 @@ export default class Tile extends React.Component {
     return(
       <div>
          <Card>
-           <Image src={this.props.post.thumbnail} onClick={this.handleClick} />
+           <Image src={this.props.post.url} onClick={this.handleClick} />
          </Card>
       </div>
     )
